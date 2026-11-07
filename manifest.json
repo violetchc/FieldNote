@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Fieldnote · Research companion",
+  "version": "0.2.0",
+  "description": "Find protein records and compare highlighted passages with your research brief, locally.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "optional_host_permissions": [
+    "http://127.0.0.1/*",
+    "https://api.moonshot.ai/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Fieldnote"
+  },
+  "background": {
+    "service_worker": "worker.js"
+  },
+  "options_page": "desk.html"
+}

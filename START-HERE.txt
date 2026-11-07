@@ -1,0 +1,20 @@
+Fieldnote — local research companion
+====================================
+Requires desktop Google Chrome. No build, paid account, server or API key.
+To install: open chrome://extensions, turn on Developer mode, choose Load unpacked, and select the Fieldnote folder containing manifest.json. Keep that folder in place.
+
+1. Click the puzzle-piece Extensions menu > Fieldnote > Open project & demo. The synthetic example is ready to use. Try the lookup (two matching HMOX1 records) and the passage comparison.
+2. Enter your project name and brief, one question or hypothesis per line. Choose a local CSV or TSV under 1 MB, pick the identifier column and save. The dataset is copied into this browser profile; import again after the source changes.
+3. Open an HTML article or an open message in webmail. Click Fieldnote > Assist on this tab. Highlight a passage, or hover over a short request such as “Find protein HMOX1 in the dataset.” Visible paragraphs and some webmail message bodies are also checked when content changes. A supported request gets an offer; the search runs when you click Find records. Press Esc to dismiss, or Pause to stop until you reactivate it. Re-enable after navigation/reload. No site-wide permission.
+4. Lookup matches one complete identifier per cell, ignoring case and outside spaces. Record 1 means the first data row after the header. No alias inference. The comparison retrieves a line of your brief using shared terms. A match is not scientific evidence of agreement.
+5. Works on ordinary HTML in the top-level page; Chrome internal pages, the built-in PDF viewer, native apps, embedded frames, canvas editors and inaccessible selections are outside this version. It does not monitor the inbox, open attachments or search an entire shared drive. Upload a local copy instead.
+
+Optional local language model
+-----------------------------
+Install Ollama from https://ollama.com/download and download a model suited to your Mac (example: ollama pull qwen3:4b). Use a downloaded model, not a cloud tag. Configure Ollama for local-only inference; on Mac, quit Ollama, then in Terminal:
+  launchctl setenv OLLAMA_NO_CLOUD 1
+  launchctl setenv OLLAMA_ORIGINS "chrome-extension://YOUR_EXTENSION_ID"
+Replace YOUR_EXTENSION_ID with the ID shown on chrome://extensions. Reopen Ollama. If you already use an origins allowlist, add this origin to that list. In the Fieldnote project desk, expand Optional local AI, enter the same model name and enable it. Select a passage > Compare passage > Interpret locally. Clicking this last button sends only that passage and the project brief to the loopback service. Do not expose Ollama on your network. If it is offline, the built-in comparison still works.
+Ollama setup reference: https://docs.ollama.com/faq
+
+Data: one saved project in extension-local storage; no analytics or hosted service. Reading suggestions are transient. Disabling the model removes this extension's loopback permission. Uninstalling clears extension data. A standalone demo stores data separately in your browser; it cannot assist on other tabs or call a model.
